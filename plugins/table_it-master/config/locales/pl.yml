@@ -1,0 +1,47 @@
+pl:
+  issues:
+    list:
+      actions: "Akcje"
+    sidebar:
+      legend: "Legenda"
+      attachment: "Z załącznikiem"
+      work_start: "Rozpocznij pracę nad zadaniem"
+      work_stop: "Wstrzymaj pracę"
+      status_1: Nowe zadanie
+      status_2: Zadanie rozpoczęte
+      status_3: Rozwiązane
+      status_4: Oczekuje na informację zwrotną
+  table_it:
+    issues:
+      time:
+        success: "Pomyślnie dodano czas."
+        failure: "Wystąpił błąd podczas dodawania czasu, spróbuj jeszcze raz."
+  late: spóźnienia
+  to: do
+  end_time_field_name: koniec
+  field_end_time: Czas zakończenia
+  change_issue_revert: Otworzono pownie zagadnienie. Status zmieniony na "w trakcie".
+  change_issue_closed: Zagadnienia zamknięto. Po ponownym załadowaniu list nie będzie możliwe cofnięcie.
+  attachment: Załącznik
+  changed_to_in_progress: Zmieniono na "in progress"
+  cant_change_to_in_progress: Nie można zmienić na "in progress"
+  label_spent_time_plugin: Czas spędzony
+  work_start: start pracy
+  home_filter_by: "Filtruj według:"
+  home_filter: Filtruj
+  home_filter_project: Wybierz projekt...
+  home_filter_user: Wybierz użytkownika...
+  user_view: Widok admina
+  poke: Przypomij
+  label_poke_success: "Przypomnienie zostało wysłane"
+  label_poke_failure: "Wystąpił błąd. Powiadomienie nie wysłane. Musisz zrobić spacerek."
+  label_project_default_users: "Domyślni użytkownicy"
+  label_end_time_custom_field: "Niestandardowe pole czasu zakończenia"
+  label_project_default_activity: "Domyślne aktywności"
+  label_default_close: "Domyślny status zamknięcia"
+  label_default_inprogress: "Domyślny status ponownego otwarcia"
+  edit: Edytuj
+  add_time: "Dodaj"
+  label_add_next: "Dodaj kolejne"
+  label_remove: "Usuń"
+  alert_not_yours: "Nie możesz liczyć czasu w nieswoich zadaniach!"

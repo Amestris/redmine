@@ -1,0 +1,64 @@
+<% @users_list = User.active.all %>
+<% @projects_list = Project.all %>
+<% @roles_list = Role.where(builtin: false).all %>
+<% @activities_list = TimeEntryActivity.all %>
+<table class="settings">
+  <tbody>
+    <tr>
+      <th><%= l(:label_project_default_users) %></th>
+      <td>
+        <%= hidden_field(:settings, :default_users, value: settings[:default_users]) %>
+        <table class="default_users">
+          <tbody>
+            <% users = JSON.parse(settings[:default_users] || '{}') rescue {} %>
+            <% users.each do |project, user| %>
+              <%= render 'default_user', project: project, user: user %>
+            <% end %>
+          </tbody>
+        </table>
+        <% template = render('default_user').to_str %>
+        <%= link_to l(:label_add_next), '#', class: :'add-next-match', data: { template: template } %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= l(:label_project_default_activity) %></th>
+      <td>
+        <%= hidden_field(:settings, :default_activity, value: settings[:default_activity]) %>
+        <table class="default_activity">
+          <tbody>
+            <% activities = JSON.parse(settings[:default_activity] || '{}') rescue {} %>
+            <% activities.each do |role, activity| %>
+              <%= render 'default_activity', role: role, activity: activity %>
+            <% end %>
+          </tbody>
+        </table>
+        <% template = render('default_activity').to_str %>
+        <%= link_to l(:label_add_next), '#', class: :'add-next-match', data: { template: template } %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= l(:label_end_time_custom_field) %></th>
+      <td>
+        <%= select_tag("settings[end_time]", options_from_collection_for_select(CustomField.scoped, :id, :name, settings[:end_time])) %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= l(:label_default_close) %></th>
+      <td>
+        <%= select_tag("settings[close_status]", options_from_collection_for_select(IssueStatus.where(is_closed: true), :id, :name, settings[:close_status])) %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= l(:label_default_inprogress) %></th>
+      <td>
+        <%= select_tag("settings[inprogress_status]", options_from_collection_for_select(IssueStatus.where(is_closed: false), :id, :name, settings[:inprogress_status])) %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<% content_for :header_tags do %>
+  <%= javascript_include_tag('settings', plugin: :table_it) %>
+  <%= content_tag(:style, type: 'text/css') do %>
+    table.settings th { text-align: right; vertical-align: top; line-height: 2.5em; }
+  <% end %>
+<% end %>
